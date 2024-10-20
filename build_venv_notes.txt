@@ -1,0 +1,8 @@
+Python Version: 3.12.5
+
+C:\LocationFor\Python312\python -m venv DocTrPyVenv
+
+pip install "python-doctr[torch,viz,html,contrib]"
+pip install onnx==1.16.1
+
+
