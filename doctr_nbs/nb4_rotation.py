@@ -46,7 +46,7 @@ print(f"Extracted text:\n{result.render()}")
 # V2
 #
 
-doc = DocumentFile.from_images(['back_cover.jpg'])
+doc = DocumentFile.from_images(['test_files/back_cover.jpg'])
 # Let's rotate the document by 180 degrees
 doc = [rotate_image(doc[0], 180, expand=False)]
 
@@ -76,7 +76,7 @@ print(f"Extracted text:\n{result.render()}")
 # V3
 #
 
-doc = DocumentFile.from_images(['back_cover.jpg'])
+doc = DocumentFile.from_images(['test_files/back_cover.jpg'])
 # Let's rotate the document by 180 degrees
 doc = [rotate_image(doc[0], 180, expand=False)]
 

@@ -47,7 +47,7 @@ det_predictor.model.postprocessor.box_thresh = 0.1
 
 # Load the document image
 # docs = DocumentFile.from_images([receipt])
-docs = DocumentFile.from_images(['mock_receipt.jpeg'])
+docs = DocumentFile.from_images(['test_files/mock_receipt.jpeg'])
 results = det_predictor(docs)
 # string_result = results.render()
 # print(string_result)
@@ -73,7 +73,7 @@ print(results)
 
 # Load the word crop image
 # doc = DocumentFile.from_images([word_crop])
-doc = DocumentFile.from_images(['word-crop.png'])
+doc = DocumentFile.from_images(['test_files/word-crop.png'])
 # Define the recognition predictor
 rec_predictor = recognition_predictor(arch="parseq", pretrained=True, symmetric_pad=True, batch_size=1)  # .cuda().half()  # Uncomment this line if you have a GPU
 result = rec_predictor(doc)
@@ -86,14 +86,14 @@ print(result)
 # print(f"Recognized text: {result[0][0]} \nwith confidence: {result[0][1]:.2f}")
 
 # docs = DocumentFile.from_images([receipt])
-docs = DocumentFile.from_images(['mock_receipt.jpeg'])
+docs = DocumentFile.from_images(['test_files/mock_receipt.jpeg'])
 page_orient_predictor = page_orientation_predictor(pretrained=True, batch_size=1)  # .cuda().half()  # Uncomment this line if you have a GPU
 result = page_orient_predictor(docs)
 print("page_orientation_predictor")
 print(f"general page orientation: {result[1][0]} with confidence: {result[2][0]:.2f}")
 
 # crop = DocumentFile.from_images([word_crop])
-crop = DocumentFile.from_images(['word-crop.png'])
+crop = DocumentFile.from_images(['test_files/word-crop.png'])
 crop_orient_predictor = crop_orientation_predictor(pretrained=True, batch_size=1)  # .cuda().half()  # Uncomment this line if you have a GPU
 result = crop_orient_predictor(crop)
 print("crop_orientation_predictor")

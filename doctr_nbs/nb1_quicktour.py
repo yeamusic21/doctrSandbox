@@ -5,7 +5,7 @@ from doctr.models import ocr_predictor
 # Download a sample
 # !wget https://eforms.com/download/2019/01/Cash-Payment-Receipt-Template.pdf
 # Read the file
-doc = DocumentFile.from_pdf("Cash-Payment-Receipt-Template.pdf")
+doc = DocumentFile.from_pdf("test_files/Cash-Payment-Receipt-Template.pdf")
 print(f"Number of pages: {len(doc)}")
 
 # Instantiate a pretrained model
