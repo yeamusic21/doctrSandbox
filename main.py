@@ -22,6 +22,9 @@ start_time_imports = timeit.default_timer()
 from onnx.onnx_cpp2py_export import ONNX_ML
 from doctr.io import DocumentFile
 from doctr.models import ocr_predictor
+from chain import reviser_chain
+from dotenv import load_dotenv
+load_dotenv()
 
 import torch
 
@@ -69,6 +72,11 @@ print("-------------------------------------------------")
 print("Print result...")
 string_result = result.render()
 print(string_result)
+
+print("-------------------------------------------------")
+print("Print REVISED result...")
+res = reviser_chain.invoke({"input": string_result})
+print(res)
 
 # Runtime
 print("-------------------------------------------------")
