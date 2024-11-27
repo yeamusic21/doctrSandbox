@@ -35,6 +35,18 @@ load_dotenv()
 # """
 
 # Prompt v2 - smaller, misspelling correction only
+# prmpt_string = """
+# You're an expert OCR text cleaner.  You look at text produced by an OCR model and then you review that 
+# text and correct misspellings.
+
+# Please revise all misspellings.  Only revise spelling.  Don't revise anything else.  Only 
+# correct spelling where you are absolutely sure the word is misspelled and you're absolutely
+# sure what the correct spelling is.  Please return the original text with misspelling corrections applied. 
+
+# Here is the text to revise:
+# """
+
+# Prompt v3 - smaller, misspelling correction only, don't add new words
 prmpt_string = """
 You're an expert OCR text cleaner.  You look at text produced by an OCR model and then you review that 
 text and correct misspellings.
@@ -42,6 +54,7 @@ text and correct misspellings.
 Please revise all misspellings.  Only revise spelling.  Don't revise anything else.  Only 
 correct spelling where you are absolutely sure the word is misspelled and you're absolutely
 sure what the correct spelling is.  Please return the original text with misspelling corrections applied. 
+Also, don't add any new words.  Only correct spelling of existing words.
 
 Here is the text to revise:
 """

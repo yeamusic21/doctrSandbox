@@ -25,6 +25,7 @@ from doctr.models import ocr_predictor
 from chain import reviser_chain
 from dotenv import load_dotenv
 load_dotenv()
+from my_utils import chunk_string
 
 import torch
 
@@ -75,8 +76,13 @@ print(string_result)
 
 print("-------------------------------------------------")
 print("Print REVISED result...")
-res = reviser_chain.invoke({"input": string_result})
-print(res)
+str_res_chunks = chunk_string(string_result, 4)
+results = []
+for chunk in str_res_chunks:
+    res = reviser_chain.invoke({"input": chunk})
+    results.append(res.content)
+final_string = " ".join([x for x in results])
+print(final_string)
 
 # Runtime
 print("-------------------------------------------------")

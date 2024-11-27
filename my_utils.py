@@ -1,3 +1,25 @@
+import textwrap
+
+def chunk_string(text, n):
+    """Splits a string into N substrings without cutting off words."""
+
+    words = text.split()
+    chunks = []
+    chunk_size = len(words) // n
+
+    for i in range(0, len(words), chunk_size):
+        chunk = ' '.join(words[i:i + chunk_size])
+        chunks.append(chunk)
+
+    # Handle any leftover words
+    if len(chunks) > n:
+        chunks[-2] += ' ' + chunks[-1]
+        chunks.pop()
+
+    return chunks
+
+# text = "This is a long string that we want to split into chunks without cutting off words."
+text = """
 NAMP
 DATE
 CITY
@@ -75,3 +97,13 @@ ana Secure The Blessngs of hberty -8 our-
 Belves anol por Pesterity,do o. rdain ang
 establish this RONSTITUTIO N Por the
 Unted d SYates of A merica.
+"""
+
+
+
+n = 10
+
+# print(chunk_string(text, n))
+for i, chunk in enumerate(chunk_string(text, n)):
+    print("--------------------CHUNK ", str(i))
+    print(chunk)
