@@ -30,6 +30,7 @@ from my_utils import chunk_string
 import torch
 
 use_gpu = False
+use_revisor = False
 
 if torch.cuda.is_available() and use_gpu==True:
     # device = torch.device("cuda:0")
@@ -56,7 +57,8 @@ print("runtime to load model: ", elapsed)
 # load pdf
 print("-------------------------------------------------")
 print("Load doc ...")
-doc = DocumentFile.from_images("test_files/Handwriting-sample-from-for-NIST-SD19-a-Handwritten-sample-form-b-Images-of.png")
+# doc = DocumentFile.from_images("test_files/Handwriting-sample-from-for-NIST-SD19-a-Handwritten-sample-form-b-Images-of.png")
+doc = DocumentFile.from_images("test_files/form_example.png")
 
 # Analyze
 print("-------------------------------------------------")
@@ -74,15 +76,16 @@ print("Print result...")
 string_result = result.render()
 print(string_result)
 
-print("-------------------------------------------------")
-print("Print REVISED result...")
-str_res_chunks = chunk_string(string_result, 4)
-results = []
-for chunk in str_res_chunks:
-    res = reviser_chain.invoke({"input": chunk})
-    results.append(res.content)
-final_string = " ".join([x for x in results])
-print(final_string)
+if use_revisor:
+    print("-------------------------------------------------")
+    print("Print REVISED result...")
+    str_res_chunks = chunk_string(string_result, 4)
+    results = []
+    for chunk in str_res_chunks:
+        res = reviser_chain.invoke({"input": chunk})
+        results.append(res.content)
+    final_string = " ".join([x for x in results])
+    print(final_string)
 
 # Runtime
 print("-------------------------------------------------")
